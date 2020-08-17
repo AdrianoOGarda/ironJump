@@ -24,3 +24,32 @@ function drawPlatforms() {
 
     })
 }
+
+function updatePlatformPosition() {
+
+
+    if (doodle.y <= halfHeight) {
+        board.update(doodle.velY);
+
+        plataformas.forEach((p) => {
+            p.update(doodle.velY)
+        })
+    }
+}
+
+function generaNuevaPlataforma() {
+    let lastIndex = plataformas.length - 1;
+    let nuevaPlataforma = new Platform(0, 0);
+
+    nuevaPlataforma.x = Math.floor(Math.random() * ($canvas.width - nuevaPlataforma.width))
+    nuevaPlataforma.y = plataformas[lastIndex].y - Math.floor(Math.random() * (80 - 40) + 40)
+
+    return nuevaPlataforma
+}
+
+
+function writeText() {
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "red";
+    ctx.fillText(`DoodleSpeed = ${doodle.velY}`, halfWidth - 175, $canvas.height - 100);
+}

@@ -64,12 +64,22 @@ class Jugador {
     update() {
         this.velY = this.velY + gravity
         if (this.y <= halfHeight - 100 && this.velY <= 0) {
+            board.update(this.velY);
 
-            //bajar plataformas
-            //bajar background 
+            plataformas.forEach((currentPlatform, index) => {
+                currentPlatform.update(this.velY)
+
+                if (currentPlatform.y > $canvas.height) {
+                    plataformas.splice(index, 1);
+                    plataformas.push(generaNuevaPlataforma())
+                }
+
+            })
+        } else {
+            this.y += this.velY;
         }
 
-        this.y += this.velY;
+        score = -this.velY
 
 
         if (this.velY >= 0) {
@@ -100,5 +110,8 @@ class Platform {
     draw() {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+    update(velY = 0) {
+        this.y -= velY * 2
     }
 }
