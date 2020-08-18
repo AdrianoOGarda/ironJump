@@ -6,11 +6,15 @@
   margin:0;
 }
 
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* grid-template-rows: 1fr 1fr 1fr 1fr; */
-    gap: 1px 1px;
+    /* gap: 1px 1px; */
     grid-template-areas: "Titulo Titulo Titulo Titulo" 
     "Izquierda MainArea MainArea Derecha" 
     "Izquierda MainArea MainArea Derecha"
@@ -57,6 +61,11 @@
     color: rgb(175, 75, 75)
 
   }
+
+  .MainArea, .Derecha, .Izquierda
+  {
+    background-color: #EFF3E9;
+  }
   
   .MainArea { 
     grid-area: MainArea; 
@@ -76,7 +85,27 @@
   
   .Teclas { grid-area: Teclas; }
   
-  .Doodle { grid-area: Doodle; }
+  .Doodle { 
+    grid-area: Doodle;  
+    position:relative
+  }  
+
+  @keyframes doodleIzquierda
+  {
+    25% {top:46%}
+    50% {top:-40%}
+    75% {top: 46%}
+    100% {top: -40%}
+
+  }
+  .Doodle img { 
+    position: absolute;
+    animation-name: doodleIzquierda;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    top: -40%;
+    left:35%;
+  }
   
   .Derecha {
     display: grid;
@@ -87,9 +116,66 @@
     grid-area: Derecha;
   }
   
-  .Score { grid-area: Score; }
+  .Score { 
+    grid-area: Score; 
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin-left: -160px;
+  }
+
+  .Score ul{
+    list-style: none
+  }
   
-  .DoodleDer { grid-area: DoodleDer; }
+  .DoodleDer { 
+    grid-area: DoodleDer; 
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center; 
+  }
+
+  @keyframes doodleDerecha
+  {
+    25% {top:-40%}
+    50% {top:46%}
+    75% {top: -40%}
+    100% {top: 46%}
+
+  }
+  .DoodleDer img { 
+    position: absolute;
+    animation-name: doodleDerecha;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    top: 46%;
+    right: 35%;
+  }
+
   
-  .Footer { grid-area: Footer; height:75px; }
+  .Footer { 
+    color: white;
+    background-color: gray;
+    grid-area: Footer; 
+    height:75px; 
+    display:flex;
+    align-content: center;
+    justify-content: space-around;
+    align-items: baseline;
+    font
+  }
+
+  .Footer div:first-child{ 
+    display:flex;
+    align-content: center;
+    justify-content: space-around;
+    align-items: baseline;
+  }  
+  
+  .Footer div:first-child a{ 
+    color: white;
+  }
   

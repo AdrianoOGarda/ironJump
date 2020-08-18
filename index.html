@@ -7,27 +7,42 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Seymour+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        
+    <title>IronJump</title>
 </head>
 
 <body>
     <div class="grid-container">
         <div class="Titulo"><span class="title">Iron</span><span class="relativeTitle">Jump</span></div>
         <div class="MainArea">
-            <canvas width="600" height="800" style="border: 2px solid;"></canvas></div>
+            <canvas width="600" height="765" style="border: 2px solid;"></canvas></div>
         <div class="Izquierda">
           <div class="Teclas"></div>
-          <div class="Doodle"></div>
+          <div class="Doodle">            
+            <img src="../imgs/left.png" alt="">
+          </div>
         </div>
         <div class="Derecha">
-          <div class="Score"></div>
-          <div class="DoodleDer"></div>
+          <div class="Score">
+            Score
+            <ul>
+              <li>Test Score - 1000</li>
+            </ul>
+          </div>
+          <div class="DoodleDer">
+            <img src="../imgs/right.png" alt=""></div>
         </div>
-        <div class="Footer">footer</div>
+        <div class="Footer">
+          <div><a href=""><i class="fa fa-github fa-3x" aria-hidden="true"></i>GitHub Files</a></div>
+          <div>Adriano Ortiz</div>
+          <div>Daniel Zamarron</div>
+          <div>Ago 2020</div>          
+        </div>
       </div>
 
 
-    <img src="../imgs/left.png" alt="" style="display:none">
     <img src="../imgs/right.png" alt="" style="display:none">
     <script src="/js/canvas.js"></script>
     <script src="/js/classes.js"></script>
