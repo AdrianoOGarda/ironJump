@@ -10,11 +10,15 @@ let frames = 0
 let keys = []
 let intervalID
 let score = 0;
+let dificultad = 0;
+let plataformasDestruidas = 0;
+
 
 const board = new Board()
 const doodle = new Jugador(halfWidth - 60, halfHeight - 200)
+    // const monst = new Monster(200, 200)
 
-const numPlataformas = 50;
+const numPlataformas = 100;
 let plataformas = [];
 generarPlataformas()
 
@@ -33,6 +37,7 @@ function mainLoop(time) {
     doodle.update();
     doodle.draw();
     drawPlatforms()
+        // monst.draw()
     drawScore()
 
     writeText()

@@ -31,6 +31,7 @@ class Jugador {
         this.height = 60
         this.velX = 5
         this.velY = 0
+        this.maxVelY = -13.5;
         this.img = new Image()
         this.imgLeft = "../imgs/left.png"
         this.imgRight = "../imgs/right.png"
@@ -58,28 +59,45 @@ class Jugador {
     }
 
     jump() {
-        this.velY = -13.5
+        this.velY = this.maxVelY;
     }
 
     update() {
         this.velY = this.velY + gravity
         if (this.y <= halfHeight - 100 && this.velY <= 0) {
             board.update(this.velY);
-
+            let arraySplice = []
             plataformas.forEach((currentPlatform, index) => {
                 currentPlatform.update(this.velY)
 
                 if (currentPlatform.y > $canvas.height) {
-                    plataformas.splice(index, 1);
-                    plataformas.push(generaNuevaPlataforma())
-                }
+                    //plataformas.splice(index, 1);
+                    arraySplice.unshift(index)
+                    plataformasDestruidas++
+                    if (plataformasDestruidas === 50) {
+                        plataformasDestruidas = 0
+                        dificultad = dificultad >= 6 ? 6 : dificultad + 1;
 
+                    }
+                    //plataformas.push(generaNuevaPlataforma())
+                }
             })
+
+            arraySplice.forEach((platIndex) => {
+                plataformas.splice(platIndex, 1);
+                plataformas.push(generaNuevaPlataforma())
+            })
+
+
+
         } else {
             this.y += this.velY;
         }
 
-        score = -this.velY
+        if ((score - this.velY) > score) {
+            score -= this.velY
+            score = ~~score;
+        }
 
 
         if (this.velY >= 0) {
@@ -106,6 +124,7 @@ class Platform {
         this.width = 100
         this.height = 20
         this.color = '#6ADA00'
+        this.gap = 20
     }
     draw() {
         ctx.fillStyle = this.color
@@ -115,3 +134,24 @@ class Platform {
         this.y -= velY * 2
     }
 }
+
+// class Monster {
+//     constructor(x, y) {
+//         this.x = x
+//         this.y = y
+//         this.velX = 5
+//         this.width = 60
+//         this.height = 60
+//         this.img = new Image()
+//         this.img.src = "../imgs/blue.png"
+//     }
+//     draw() {
+//         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+//     }
+//     update() {
+//             this.x += this.velX
+//             if (this.x > $canvas.width) {
+//                 this.x -= this.velX
+//             }
+//     }
+// }
