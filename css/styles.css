@@ -1,0 +1,95 @@
+/*font-family: 'Seymour One', sans-serif; IRON*/ 
+/*font-family: 'Gloria Hallelujah', cursive; Jump*/
+*
+{
+  padding: 0;
+  margin:0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+    gap: 1px 1px;
+    grid-template-areas: "Titulo Titulo Titulo Titulo" 
+    "Izquierda MainArea MainArea Derecha" 
+    "Izquierda MainArea MainArea Derecha"
+     "Footer Footer Footer Footer";
+  }
+  
+  .Titulo { 
+    grid-area: Titulo; 
+    height: 125px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #CEDDBB;
+    /*#fcfff8*/
+  }
+
+  span
+  {
+    font-size: 80px
+  }
+  /*Iron*/
+  span.title
+  {
+    font-family: 'Seymour One', sans-serif;
+    margin-left: -280px;
+    letter-spacing: 20px;
+    background-image:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(172,172,172,1) 65%, rgba(255,255,255,1) 100%);
+    background-clip: text;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+  }
+  /* */
+  span.relativeTitle
+  {
+    letter-spacing: 20px;
+    font-family: 'Gloria Hallelujah', cursive;
+    position: absolute;
+    transform: rotate(-15deg);
+    right: 34%;
+    top: -3%;
+    color: rgb(175, 75, 75)
+
+  }
+  
+  .MainArea { 
+    grid-area: MainArea; 
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+  
+  .Izquierda {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "Teclas" "Doodle";
+    grid-area: Izquierda;
+  }
+  
+  .Teclas { grid-area: Teclas; }
+  
+  .Doodle { grid-area: Doodle; }
+  
+  .Derecha {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "Score" "DoodleDer";
+    grid-area: Derecha;
+  }
+  
+  .Score { grid-area: Score; }
+  
+  .DoodleDer { grid-area: DoodleDer; }
+  
+  .Footer { grid-area: Footer; height:75px; }
+  
