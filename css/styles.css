@@ -8,6 +8,7 @@
 
 body{
   font-family: 'Roboto', sans-serif;
+  font-size:20px;
 }
 
 .grid-container {
@@ -93,9 +94,9 @@ body{
   @keyframes doodleIzquierda
   {
     25% {top:46%}
-    50% {top:-40%}
+    50% {top:-32%}
     75% {top: 46%}
-    100% {top: -40%}
+    100% {top: -32%}
 
   }
   .Doodle img { 
@@ -103,8 +104,9 @@ body{
     animation-name: doodleIzquierda;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-    top: -40%;
-    left:35%;
+    top: -32%;
+    left: 35%;
+    transform: scale(0.5, 0.5);
   }
   
   .Derecha {
@@ -123,10 +125,15 @@ body{
     align-content: center;
     flex-direction: column;
     margin-left: -160px;
+    font-size: 30px
   }
 
   .Score ul{
     list-style: none
+  }
+  
+  .Score ul li:first-child{
+    margin-top: 30px
   }
   
   .DoodleDer { 
@@ -140,9 +147,9 @@ body{
 
   @keyframes doodleDerecha
   {
-    25% {top:-40%}
+    25% {top:-32%}
     50% {top:46%}
-    75% {top: -40%}
+    75% {top: -32%}
     100% {top: 46%}
 
   }
@@ -153,6 +160,7 @@ body{
     animation-iteration-count: infinite;
     top: 46%;
     right: 35%;
+    transform: scale(0.5, 0.5);
   }
 
   
@@ -164,18 +172,35 @@ body{
     display:flex;
     align-content: center;
     justify-content: space-around;
-    align-items: baseline;
-    font
+    /* align-items: baseline; */
+    font-size: 16px;
+    align-self: center
   }
 
   .Footer div:first-child{ 
     display:flex;
     align-content: center;
     justify-content: space-around;
-    align-items: baseline;
   }  
   
   .Footer div:first-child a{ 
     color: white;
+    margin-left: 20px
+  }    
+  
+  .Footer div a{ 
+    color: white;
+    text-decoration-line: none;
+  }  
+  
+  .Footer div:not(:first-child){ 
+    align-self:center;
   }
   
+  .link
+  {
+    display:flex;
+    align-content: baseline;
+    align-items: center;
+    justify-content: center;
+  }
