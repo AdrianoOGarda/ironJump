@@ -53,3 +53,19 @@ function writeText() {
     ctx.fillStyle = "red";
     ctx.fillText(`DoodleSpeed = ${doodle.velY}`, halfWidth - 175, $canvas.height - 100);
 }
+
+function gameOver() {
+    if (doodle.y > $canvas.height + doodle.height) {
+        clearCanvas()
+        ctx.font = `50px 'Arial'`
+        ctx.fillStyle = "crimson"
+        ctx.fillText("Game Over", 200, 400)
+    }
+}
+
+
+function drawScore() {
+    ctx.font = "30px 'Arial'"
+    ctx.fillStyle = "crimson"
+    ctx.fillText(Math.floor((frames / 150)), 100, 100)
+}

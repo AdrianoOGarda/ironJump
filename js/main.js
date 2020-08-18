@@ -20,7 +20,7 @@ generarPlataformas()
 
 
 function mainLoop(time) {
-
+    frames++
     clearCanvas()
 
     board.update()
@@ -33,8 +33,10 @@ function mainLoop(time) {
     doodle.update();
     doodle.draw();
     drawPlatforms()
+    drawScore()
 
     writeText()
+    gameOver()
 
     requestAnimationFrame(mainLoop);
 }
