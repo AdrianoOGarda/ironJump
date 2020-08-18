@@ -16,31 +16,29 @@ let plataformasDestruidas = 0;
 
 const board = new Board()
 const doodle = new Jugador(halfWidth - 60, halfHeight - 200)
-    // const monst = new Monster(200, 200)
 
 const numPlataformas = 100;
 let plataformas = [];
 generarPlataformas()
 
+let monstruos = [];
+
 
 function mainLoop(time) {
-    frames++
     clearCanvas()
 
     board.update()
     board.draw();
 
-    //updatePlatformPosition();
-
     checkKeys();
 
     doodle.update();
     doodle.draw();
-    drawPlatforms()
-        // monst.draw()
-    drawScore()
 
-    writeText()
+    drawPlatforms()
+    drawMonstruos();
+
+    drawScore()
     gameOver()
 
     requestAnimationFrame(mainLoop);

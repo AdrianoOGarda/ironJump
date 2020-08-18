@@ -29,6 +29,15 @@ function drawPlatforms() {
     })
 }
 
+function drawMonstruos() {
+
+    monstruos.forEach((m) => {
+        m.update();
+        m.draw()
+
+    })
+}
+
 function updatePlatformPosition() {
 
 
@@ -41,6 +50,9 @@ function updatePlatformPosition() {
     }
 }
 
+
+let plataformasGeneradas = 0;
+
 function generaNuevaPlataforma() {
     let lastIndex = plataformas.length - 1;
     let nuevaPlataforma = new Platform(0, 0);
@@ -49,13 +61,20 @@ function generaNuevaPlataforma() {
     nuevaPlataforma.width -= (dificultad * 5)
     nuevaPlataforma.y = plataformas[lastIndex].y - (doodle.maxVelY * 0.75) - Math.floor(Math.random() * ((60 + (dificultad * 25)) + 20))
 
-
+    if (dificultad >= 2 && Math.random() > 0.75 && plataformasGeneradas >= 35) {
+        generarMonstruo(nuevaPlataforma.x, nuevaPlataforma.y, nuevaPlataforma.width);
+        plataformasGeneradas = 0;
+    }
+    plataformasGeneradas++;
     return nuevaPlataforma
 }
 
-// function updateMonsterPos() {
+function generarMonstruo(x, y, width) {
 
-// }
+    let monstruo = new Monster(x + width / 2, y + 10)
+    monstruos.push(monstruo);
+}
+
 
 function writeText() {
     ctx.font = "20px Arial";

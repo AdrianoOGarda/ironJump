@@ -13,7 +13,6 @@ class Board {
 
     update(menosY = 0) {
         this.y -= menosY;
-        //this.y++
         if (this.y > $canvas.height) this.y = 0
     }
 
@@ -66,26 +65,30 @@ class Jugador {
         this.velY = this.velY + gravity
         if (this.y <= halfHeight - 100 && this.velY <= 0) {
             board.update(this.velY);
+
             let arraySplice = []
+
             plataformas.forEach((currentPlatform, index) => {
                 currentPlatform.update(this.velY)
 
                 if (currentPlatform.y > $canvas.height) {
-                    //plataformas.splice(index, 1);
                     arraySplice.unshift(index)
                     plataformasDestruidas++
                     if (plataformasDestruidas === 50) {
                         plataformasDestruidas = 0
-                        dificultad = dificultad >= 6 ? 6 : dificultad + 1;
+                        dificultad = dificultad >= 5 ? 5 : dificultad + 1;
 
                     }
-                    //plataformas.push(generaNuevaPlataforma())
                 }
             })
 
             arraySplice.forEach((platIndex) => {
                 plataformas.splice(platIndex, 1);
                 plataformas.push(generaNuevaPlataforma())
+            })
+
+            monstruos.forEach((currentMonstruo) => {
+                currentMonstruo.updateVertical(this.velY)
             })
 
 
@@ -101,7 +104,7 @@ class Jugador {
 
 
         if (this.velY >= 0) {
-            //console.log(`Debe ser mayor a 0 | La velocidad del Doodle es de ${this.velY} | X:${this.x}, Y:${this.y}`)
+
             plataformas.forEach((elemento, i) => {
 
                 if (this.x >= elemento.x - this.width &&
@@ -111,9 +114,9 @@ class Jugador {
                     this.jump()
                 }
             })
-        } else {
-            //console.log(`Debe ser menor a 0 | La velocidad del Doodle es de ${this.velY} | X:${this.x}, Y:${this.y}`)
         }
+
+
     }
 }
 
@@ -135,23 +138,43 @@ class Platform {
     }
 }
 
-// class Monster {
-//     constructor(x, y) {
-//         this.x = x
-//         this.y = y
-//         this.velX = 5
-//         this.width = 60
-//         this.height = 60
-//         this.img = new Image()
-//         this.img.src = "../imgs/blue.png"
-//     }
-//     draw() {
-//         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-//     }
-//     update() {
-//             this.x += this.velX
-//             if (this.x > $canvas.width) {
-//                 this.x -= this.velX
-//             }
-//     }
-// }
+class Monster {
+    constructor(x, y) {
+        this.x = x
+        this.y = y
+        this.velX = 5
+        this.width = 60
+        this.height = 60
+        this.img = new Image()
+        this.img.src = Monster.monsterImg()
+        this.dir = 1 // 0 - Izq | 1 - Der
+    }
+
+    static monsterImg() {
+        let monsterType = Math.floor(Math.random() * (3)) % 3
+        switch (monsterType) {
+            //verde
+            case 0:
+                return "../imgs/green.png";
+                //rojo
+            case 1:
+                return "../imgs/red.png";
+                //azul
+            case 2:
+                return "../imgs/blue.png"
+        }
+    }
+
+    draw() {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+    }
+
+    update() {
+        this.x += this.dir == 0 ? -this.velX : this.velX;
+        if (this.x + this.width > $canvas.width) this.dir = 0;
+        if (this.x <= 0) this.dir = 1;
+    }
+    updateVertical(velY = 0) {
+        this.y -= velY
+    }
+}
