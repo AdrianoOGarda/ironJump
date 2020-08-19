@@ -86,7 +86,66 @@ span.relativeTitle {
     grid-area: Izquierda;
   }
   
-  .Teclas { grid-area: Teclas; }
+  .Teclas { 
+    grid-area: Teclas;   
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin-left: -160px;
+    font-size: 30px
+  }
+
+  #teclas{
+    display: relative
+  }
+
+  #teclas div img{
+    position: absolute;
+    transform: scale(0.5, 0.5);
+  }
+
+  .KeyA
+  {
+    top:35%;
+    left: 5%
+  }
+
+  .KeyD
+  {
+    top:55%;
+    left: 5%
+  }
+
+  .spanKeyA
+  {
+    position: absolute;
+    top:40%;
+    left: 13%
+  }
+
+  .spanKeyD
+  {
+    position: absolute;
+    top:61%;
+    left: 13%
+  }
+
+
+  #teclas div span{
+    position: absolute;
+    font-size: 20px !important;
+  }
+
+  .Rules{
+    margin-left:335px;
+  }
+
+  .Rules > span{
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+  }
   
   .Doodle { 
     grid-area: Doodle;  
@@ -130,12 +189,13 @@ span.relativeTitle {
     font-size: 30px
   }
 
-.Score ul {
-    list-style: none
+  .Score ul {
+    list-style: none;
+    z-index: 2;
   }
-  
   .Score ul li:first-child{
-    margin-top: 30px
+    margin-top: 30px;
+    font-weight: bold;
   }
   
   .DoodleDer { 
@@ -204,4 +264,24 @@ span.relativeTitle {
     align-content: baseline;
     align-items: center;
     justify-content: center;
+  }
+
+  a:hover{
+    cursor: help;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .DoodleDer img, .Doodle img   {
+      display:none    
+    }
+
+    .Score, .Teclas{
+      display: none;
+    }
+
+    span.relativeTitle
+    {
+      right: 23vh
+    }
+
   }

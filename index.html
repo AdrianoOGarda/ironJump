@@ -19,20 +19,32 @@
         <div class="MainArea">
             <canvas width="600" height="765"></canvas></div>
         <div class="Izquierda">
-            <div class="Teclas"></div>
+            <div class="Teclas">              
+              <div class="Rules">
+                <h2>Goal!</h2>
+                <span>Try to climb as far as you can without falling!</span>
+              </div>
+              <div id="teclas">
+                <div>
+                  <img class="KeyA" src="../imgs/KeyA.jpg" alt=""><span class="spanKeyA">Press <b>A</b> Key to go Left</span> 
+                </div>
+                <div>
+                  <img class="KeyD" src="../imgs/KeyD.jpg" alt=""><span class="spanKeyD">Press <b>D</b> Key to go Right</span>
+                </div>
+
+              </div>
+
+            </div>
             <div class="Doodle">
                 <img src="../imgs/left.png" alt="">
             </div>
         </div>
         <div class="Derecha">
           <div class="Score">
-            Score
-            <ul>
-              <li>Test Score - 1000</li>
-              <li>Test Score - 1000</li>
-              <li>Test Score - 1000</li>
-              <li>Test Score - 1000</li>
-              <li>Test Score - 1000</li>
+            <div class="ScoreText">
+              <h2>Today's Top Scores</h2>
+            </div>
+            <ul id="scoreId">
             </ul>
           </div>
           <div class="DoodleDer">
@@ -43,7 +55,7 @@
             <div><a href="https://github.com/danZamarron/ironJump"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a></div>
             <div><a href="">GitHub Files</a></div>
           </div>          
-          <div>Adriano Ortiz</div>
+          <div><a href="https://github.com/AdrianoOGarda"></a>Adriano Ortiz</div>
           <div><a href="https://github.com/danZamarron/"> Daniel Zamarron</a></div>
           <div>Ago 2020</div>          
         </div>
@@ -51,6 +63,7 @@
 
 
     <img src="../imgs/right.png" alt="" style="display:none">
+    <script src="/js/index.js"></script>
     <script src="/js/canvas.js"></script>
     <script src="/js/classes.js"></script>
     <script src="/js/helpers.js"></script>
