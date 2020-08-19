@@ -11,7 +11,11 @@ function generarPlataformas() {
         let nuevaPlataforma = new Platform(0, 0);
 
         nuevaPlataforma.x = Math.floor(Math.random() * ($canvas.width - nuevaPlataforma.width))
-        nuevaPlataforma.y = plataformas[i - 1].y - Math.floor(Math.random() * (80 - 40) + 40)
+        nuevaPlataforma.y =
+            plataformas[i - 1].y -
+            nuevaPlataforma.height -
+            (nuevaPlataforma.gap - dificultad) -
+            Math.floor(Math.random() * ((60 + (dificultad * 25)) + 20))
 
         plataformas.push(nuevaPlataforma);
     }
@@ -21,6 +25,15 @@ function drawPlatforms() {
 
     plataformas.forEach((p) => {
         p.draw()
+
+    })
+}
+
+function drawMonstruos() {
+
+    monstruos.forEach((m) => {
+        m.update();
+        m.draw()
 
     })
 }
@@ -37,14 +50,29 @@ function updatePlatformPosition() {
     }
 }
 
+
+let plataformasGeneradas = 0;
+
 function generaNuevaPlataforma() {
     let lastIndex = plataformas.length - 1;
     let nuevaPlataforma = new Platform(0, 0);
 
     nuevaPlataforma.x = Math.floor(Math.random() * ($canvas.width - nuevaPlataforma.width))
-    nuevaPlataforma.y = plataformas[lastIndex].y - Math.floor(Math.random() * (80 - 40) + 40)
+    nuevaPlataforma.width -= (dificultad * 5)
+    nuevaPlataforma.y = plataformas[lastIndex].y - (doodle.maxVelY * 0.75) - Math.floor(Math.random() * ((60 + (dificultad * 25)) + 20))
 
+    if (dificultad >= 2 && Math.random() > 0.75 && plataformasGeneradas >= 35) {
+        generarMonstruo(nuevaPlataforma.x, nuevaPlataforma.y, nuevaPlataforma.width);
+        plataformasGeneradas = 0;
+    }
+    plataformasGeneradas++;
     return nuevaPlataforma
+}
+
+function generarMonstruo(x, y, width) {
+
+    let monstruo = new Monster(x + width / 2, y + 10)
+    monstruos.push(monstruo);
 }
 
 
@@ -67,5 +95,5 @@ function gameOver() {
 function drawScore() {
     ctx.font = "30px 'Arial'"
     ctx.fillStyle = "crimson"
-    ctx.fillText(Math.floor((frames / 150)), 100, 100)
+    ctx.fillText(score, 100, 100)
 }

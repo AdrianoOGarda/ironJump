@@ -1,9 +1,11 @@
-/*font-family: 'Seymour One', sans-serif; IRON*/ 
+/*font-family: 'Seymour One', sans-serif; IRON*/
+
+
 /*font-family: 'Gloria Hallelujah', cursive; Jump*/
-*
-{
-  padding: 0;
-  margin:0;
+
+* {
+    padding: 0;
+    margin: 0;
 }
 
 body{
@@ -16,43 +18,43 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* grid-template-rows: 1fr 1fr 1fr 1fr; */
     /* gap: 1px 1px; */
-    grid-template-areas: "Titulo Titulo Titulo Titulo" 
-    "Izquierda MainArea MainArea Derecha" 
-    "Izquierda MainArea MainArea Derecha"
-     "Footer Footer Footer Footer";
-  }
-  
-  .Titulo { 
-    grid-area: Titulo; 
+    grid-template-areas: "Titulo Titulo Titulo Titulo" "Izquierda MainArea MainArea Derecha" "Izquierda MainArea MainArea Derecha" "Footer Footer Footer Footer";
+}
+
+.Titulo {
+    grid-area: Titulo;
     height: 125px;
     display: flex;
     align-content: center;
     justify-content: center;
     background-color: #CEDDBB;
     /*#fcfff8*/
-  }
+}
 
-  span
-  {
+span {
     font-size: 80px
-  }
-  /*Iron*/
-  span.title
-  {
+}
+
+
+/*Iron*/
+
+span.title {
     font-family: 'Seymour One', sans-serif;
     margin-left: -280px;
     letter-spacing: 20px;
-    background-image:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(172,172,172,1) 65%, rgba(255,255,255,1) 100%);
+    background-image: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(172, 172, 172, 1) 65%, rgba(255, 255, 255, 1) 100%);
     background-clip: text;
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
+    -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-  }
-  /* */
-  span.relativeTitle
-  {
+}
+
+
+/* */
+
+span.relativeTitle {
     letter-spacing: 20px;
     font-family: 'Gloria Hallelujah', cursive;
     position: absolute;
@@ -60,22 +62,22 @@ body{
     right: 34%;
     top: -3%;
     color: rgb(175, 75, 75)
+}
 
-  }
-
-  .MainArea, .Derecha, .Izquierda
-  {
+.MainArea,
+.Derecha,
+.Izquierda {
     background-color: #EFF3E9;
-  }
-  
-  .MainArea { 
-    grid-area: MainArea; 
+}
+
+.MainArea {
+    grid-area: MainArea;
     display: flex;
     align-content: center;
     justify-content: center;
-  }
-  
-  .Izquierda {
+}
+
+.Izquierda {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -116,10 +118,10 @@ body{
     gap: 1px 1px;
     grid-template-areas: "Score" "DoodleDer";
     grid-area: Derecha;
-  }
-  
-  .Score { 
-    grid-area: Score; 
+}
+
+.Score {
+    grid-area: Score;
     display: flex;
     align-items: center;
     align-content: center;
@@ -128,7 +130,7 @@ body{
     font-size: 30px
   }
 
-  .Score ul{
+.Score ul {
     list-style: none
   }
   
@@ -163,13 +165,12 @@ body{
     transform: scale(0.5, 0.5);
   }
 
-  
-  .Footer { 
+.Footer {
     color: white;
     background-color: gray;
-    grid-area: Footer; 
-    height:75px; 
-    display:flex;
+    grid-area: Footer;
+    height: 75px;
+    display: flex;
     align-content: center;
     justify-content: space-around;
     /* align-items: baseline; */
@@ -177,8 +178,8 @@ body{
     align-self: center
   }
 
-  .Footer div:first-child{ 
-    display:flex;
+.Footer div:first-child {
+    display: flex;
     align-content: center;
     justify-content: space-around;
   }  
