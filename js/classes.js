@@ -4,6 +4,7 @@ class Board {
         this.y = 0
         this.width = $canvas.width
         this.height = $canvas.height
+        this.isDead = false
         this.img = new Image()
         this.img.src = "../imgs/background4.jpg"
         this.img.onload = () => {
@@ -60,6 +61,19 @@ class Jugador {
     jump() {
         this.velY = this.maxVelY;
     }
+
+    isTouching(monstruo) {
+        return (
+            this.x < monstruo.x + monstruo.width &&
+            this.x + this.width > monstruo.x &&
+            this.y < monstruo.y + monstruo.height &&
+            this.y + this.height > monstruo.y
+        )
+    }
+
+    // isTouchingAbove(monstruo) {
+    //     return (this.y + this.height > monstruo.y)
+    // }
 
     update() {
         this.velY = this.velY + gravity

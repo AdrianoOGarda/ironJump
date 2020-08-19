@@ -83,7 +83,7 @@ function writeText() {
 }
 
 function gameOver() {
-    if (doodle.y > $canvas.height + doodle.height) {
+    if (doodle.y > $canvas.height + doodle.height || doodle.isDead) {
         clearCanvas()
         ctx.font = `50px 'Arial'`
         ctx.fillStyle = "crimson"
@@ -97,3 +97,16 @@ function drawScore() {
     ctx.fillStyle = "crimson"
     ctx.fillText(score, 100, 100)
 }
+
+function checkCollisions() {
+    monstruos.forEach((monstruo) => {
+        if (doodle.isTouching(monstruo)) doodle.isDead = true
+            // if (doodle.isTouchingAbove(monstruo)) doodle.jump()
+    })
+}
+
+// function restart() {
+//     if (doodle.isDead) {
+//         clearCanvas()
+//     }
+// }
