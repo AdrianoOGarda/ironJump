@@ -37,6 +37,7 @@ function mainLoop(time) {
 
     drawPlatforms()
     drawMonstruos();
+    checkCollisions();
 
     drawScore()
     gameOver()

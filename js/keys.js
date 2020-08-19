@@ -9,6 +9,9 @@ function checkKeys() {
     if (keys[39] || keys[68]) {
         doodle.moveRight()
     }
+    // if (keys[82]) {
+    //     restart()
+    //}
 }
 
 document.addEventListener("keydown", event => {
