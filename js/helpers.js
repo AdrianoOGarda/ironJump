@@ -155,6 +155,7 @@ function checkCollisions2() {
 function restart() {
     if (doodle.isDead) {
         monstruos = [];
+        monstruos2 = [];
         plataformas = [];
         score = 0;
         distancia = 0;
@@ -166,6 +167,7 @@ function restart() {
         plataformasDestruidas = 0;
         dificultad = 0;
         generarPlataformasV2();
+        //agregarScoreHTML();
     }
 }
 
