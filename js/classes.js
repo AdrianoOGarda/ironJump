@@ -72,7 +72,7 @@ class Jugador {
                         console.log(e.name);
                     }
                 }).then(() => {
-                    console.log("playing sound !!!");
+                    //console.log("playing sound !!!");
                 });
             }
 
@@ -199,7 +199,7 @@ class Monster {
     }
 
     update() {
-        this.x += this.dir == 0 ? -this.velX : this.velX;
+        this.x += this.dir == 0 ? -(this.velX + (2*dificultad)): this.velX + (2 * dificultad);
         if (this.x + this.width > $canvas.width) this.dir = 0;
         if (this.x <= 0) this.dir = 1;
     }

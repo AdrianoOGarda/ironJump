@@ -166,7 +166,7 @@ span.relativeTitle {
     animation-duration: 4s;
     animation-iteration-count: infinite;
     top: -32%;
-    left: 35%;
+    left: 58%;
     transform: scale(0.5, 0.5);
   }
   
@@ -197,6 +197,12 @@ span.relativeTitle {
     margin-top: 30px;
     font-weight: bold;
   }
+
+  #scoreId
+  {
+    overflow: hidden;
+    height:250px;
+  }
   
   .DoodleDer { 
     grid-area: DoodleDer; 
@@ -221,7 +227,7 @@ span.relativeTitle {
     animation-duration: 4s;
     animation-iteration-count: infinite;
     top: 46%;
-    right: 35%;
+    right: 55%;
     transform: scale(0.5, 0.5);
   }
 
@@ -270,7 +276,7 @@ span.relativeTitle {
     cursor: help;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1400px) {
     .DoodleDer img, .Doodle img   {
       display:none    
     }
