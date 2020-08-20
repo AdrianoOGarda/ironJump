@@ -20,16 +20,11 @@ const doodle = new Jugador(halfWidth - 60, halfHeight - 200)
 
 const numPlataformas = 35;
 let plataformas = [];
-//generarPlataformas()
 generarPlataformasV2()
-
 
 let monstruos = [];
 let monstruos2 = [];
 
-// plataformas.push(new Platform(doodle.x - 15, doodle.y + 100))
-// monstruos.push(new Monster(doodle.x - 40, doodle.y + 200))
-// monstruos.push(new Monster(doodle.x - 40, doodle.y - 300))
 
 function mainLoop(time) {
     clearCanvas()

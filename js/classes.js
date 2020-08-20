@@ -28,16 +28,17 @@ class Jugador {
         this.x = x
         this.y = y
         this.width = 60
-        this.height = 60
+        this.height = 80
         this.velX = 5
         this.velY = 0
         this.maxVelY = -13.5;
         this.img = new Image()
-        this.imgLeft = "../imgs/left.png"
-        this.imgRight = "../imgs/right.png"
+        this.imgLeft = "../imgs/bunny1_walk1.png"
+        this.imgRight = "../imgs/bunny1_walk2.png"
         this.img.src = this.imgLeft
         this.imgDir = 0 // 0 es izquierda y 1 es derecha  
         this.isDead = false
+        this.sound = new Audio("../audio/jump_07.wav");
     }
 
     moveLeft() {
@@ -57,12 +58,26 @@ class Jugador {
 
     draw() {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-            // ctx.fillStyle = "black";
-            // ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 
     jump() {
         this.velY = this.maxVelY;
+        if (!this.isDead) {
+            let playedPromise = this.sound.play()
+
+            if (playedPromise) {
+                playedPromise.catch((e) => {
+                    console.log(e)
+                    if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+                        console.log(e.name);
+                    }
+                }).then(() => {
+                    console.log("playing sound !!!");
+                });
+            }
+
+            this.sound.currentTime = 0;
+        }
     }
 
     isTouching(monstruo) {
@@ -82,20 +97,6 @@ class Jugador {
             this.y + this.height > monstruo2.y
         )
     }
-
-    // isTouchingTop(monstruo) {
-    //     return (this.x < monstruo.x + monstruo.width)
-    // }
-
-    // isTouchingOther3(monstruo) {
-    //     return (
-    //         this.y < monstruo.y + monstruo.height
-    //     )
-    // }
-
-    // isTouchingOther4(monstruo) {
-    //     this.y + this.height > monstruo.y
-    // }
 
     update() {
         this.velY = this.velY + gravity
@@ -130,10 +131,6 @@ class Jugador {
             this.y += this.velY;
         }
 
-        // monstruos2.forEach((monst2) => {
-        //     monst2.updateVertical(this.velY)
-        // })
-
         distancia -= this.velY
 
         if (this.velY >= 0) {
@@ -146,20 +143,6 @@ class Jugador {
             })
         }
 
-        // monstruos.forEach((monstruo, i) => {
-        //     // if (this.isTouching(monstruo)) {
-        //     //     //alert("toque monstruo")
-        //     //     if (this.isTouchingTop(monstruo) && this.y > monstruo.y) {
-        //     //         this.jump();
-        //     //     } else if (this.isTouchingOther3(monstruo)) {
-        //     //         this.isDead = true
-        //     //     }
-        //     // }
-        //     if (this.isTouching(monstruo)) this.isDead = true
-        //     if (this.isTouchingTop(monstruo)) this.jump()
-        //     if (this.isTouchingOther3(monstruo)) this.isDead = true
-        //     if (this.isTouchingOther4(monstruo)) this.isDead = true
-        // })
     }
 
 }
@@ -188,8 +171,8 @@ class Monster {
         this.x = x
         this.y = y
         this.velX = 5
-        this.width = 60
-        this.height = 60
+        this.width = 80
+        this.height = 80
         this.img = new Image()
         this.img.src = Monster.monsterImg()
         this.dir = 1 // 0 - Izq | 1 - Der
@@ -201,20 +184,18 @@ class Monster {
         switch (monsterType) {
             //verde
             case 0:
-                return "../imgs/green.png";
+                return "../imgs/zorn2_64.png";
                 //rojo
             case 1:
-                return "../imgs/red.png";
+                return "../imgs/alan2_64.png";
                 //azul
             case 2:
-                return "../imgs/blue.png"
+                return "../imgs/piorn2_64.png"
         }
     }
 
     draw() {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-            // ctx.fillStyle = "yellow"
-            // ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 
     update() {
@@ -231,10 +212,10 @@ class Monster2 {
     constructor(x, y) {
         this.x = x
         this.y = y
-        this.velY = 5
+        this.velY = 8
         this.dir = 1
-        this.width = 60
-        this.height = 60
+        this.width = 80
+        this.height = 80
         this.img = new Image()
         this.img.src = Monster2.monster2img()
     }
@@ -244,13 +225,13 @@ class Monster2 {
         switch (monster2Type) {
             //verde
             case 0:
-                return "../imgs/green.png";
+                return "../imgs/zorn2_64.png";
                 //rojo
             case 1:
-                return "../imgs/red.png";
+                return "../imgs/alan2_64.png";
                 //azul
             case 2:
-                return "../imgs/blue.png"
+                return "../imgs/piorn2_64.png"
         }
     }
     draw() {
@@ -258,14 +239,6 @@ class Monster2 {
 
     }
     update() {
-            this.y += this.dir == 0 ? -this.velY : this.velY;
-        }
-        // update() {
-        //     this.x += this.dir == 0 ? -this.velX : this.velX;
-        //     if (this.x + this.width > $canvas.width) this.dir = 0;
-        //     if (this.x <= 0) this.dir = 1;
-        // }
-        // updateVertical(velY = 0) {
-        //     this.y -= velY * 2
-        // }
+        this.y += this.dir == 0 ? -this.velY : this.velY;
+    }
 }
